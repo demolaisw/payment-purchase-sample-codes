@@ -99,7 +99,7 @@ public class PurchaseRequest {
 		// This our Authorization details that we'll add to our headers,
 		// the InterswitchAuth configuration can be found under Authentications
 		// above.
-		HashMap<String, String> passportAuth = CustomOAuth
+		HashMap<String, String> customOAuth = CustomOAuth
 				.generateCustomOAuth(httpMethod, resourceUrl2, clientId,
 						clientSecretKey, additionalParameters, signatureMethod);
 
@@ -108,11 +108,11 @@ public class PurchaseRequest {
 		HttpPost post = new HttpPost(resourceUrl);
 
 		// Set headers for authorization
-		post.setHeader("Authorization", passportAuth.get(AUTHORIZATION));
-		post.setHeader("Timestamp", passportAuth.get(TIMESTAMP));
-		post.setHeader("Nonce", passportAuth.get(NONCE));
-		post.setHeader("Signature", passportAuth.get(SIGNATURE));
-		post.setHeader("SignatureMethod", passportAuth.get(SIGNATURE_METHOD));
+		post.setHeader("Authorization", customOAuth.get(AUTHORIZATION));
+		post.setHeader("Timestamp", customOAuth.get(TIMESTAMP));
+		post.setHeader("Nonce", customOAuth.get(NONCE));
+		post.setHeader("Signature", customOAuth.get(SIGNATURE));
+		post.setHeader("SignatureMethod", customOAuth.get(SIGNATURE_METHOD));
 
 		StringEntity entity = new StringEntity(data);
 
@@ -149,12 +149,12 @@ public class PurchaseRequest {
 		// Printout response string
 		System.out.println("Url: " + resourceUrl);
 		System.out.println("Authorization: "
-				+ passportAuth.get(AUTHORIZATION));
-		System.out.println("Timestamp: " + passportAuth.get(TIMESTAMP));
-		System.out.println("Nonce: " + passportAuth.get(NONCE));
-		System.out.println("Signature: " + passportAuth.get(SIGNATURE));
+				+ customOAuth.get(AUTHORIZATION));
+		System.out.println("Timestamp: " + customOAuth.get(TIMESTAMP));
+		System.out.println("Nonce: " + customOAuth.get(NONCE));
+		System.out.println("Signature: " + customOAuth.get(SIGNATURE));
 		System.out.println("SignatureMethod: "
-				+ passportAuth.get(SIGNATURE_METHOD));
+				+ customOAuth.get(SIGNATURE_METHOD));
 	}
 
 }
