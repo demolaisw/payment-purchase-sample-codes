@@ -21,8 +21,8 @@ import com.interswitchng.techquest.payment.purchase.sample.codes.utils.PassportA
 
 public class PurchaseRequest {
 
-	public static final String BASE_URL = "http://172.25.20.56:9080/api/v1/payment/purchases";
-	public static final String BASE_URL2 = "https://172.25.20.56:9080/api/v1/payment/purchases";
+	public static final String BASE_URL = "http://sandbox.interswitchng.com/api/v1/payment/purchases";
+	public static final String BASE_URL2 = "https://sandbox.interswitchng.com/api/v1/payment/purchases";
 
 	private static final String TIMESTAMP = "TIMESTAMP";
 	private static final String NONCE = "NONCE";
