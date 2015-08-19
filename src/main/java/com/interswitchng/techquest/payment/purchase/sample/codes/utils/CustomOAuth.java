@@ -22,9 +22,9 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.parser.JSONParser;
 
-public class PassportAuth {
+public class CustomOAuth {
 
-	private static final String PASSPORT_OAUTH_TOKEN_RESOURCE_URL = "http://172.25.20.140:5050/passport/oauth/token";
+	private static final String CUSTOM_OAUTH_TOKEN_RESOURCE_URL = "http://172.25.20.140:5050/passport/oauth/token";
 	
 	private static final String TIMESTAMP = "TIMESTAMP";
 	private static final String NONCE = "NONCE";
@@ -35,7 +35,7 @@ public class PassportAuth {
 	private static final String AUTHORIZATION_REALM = "Bearer ";
 	private static final String ISO_8859_1 = "ISO-8859-1";
 
-	public static HashMap<String, String> generatePassportAuth(
+	public static HashMap<String, String> generateCustomOAuth(
 			String httpMethod, String resourceUrl, String clientId,
 			String clientSecretKey, String additionalParameters,
 			String signatureMethod) throws UnsupportedEncodingException,
@@ -67,7 +67,7 @@ public class PassportAuth {
 			postParameters.add(new BasicNameValuePair("scope", "profile"));
 			
 			HttpClient client = new DefaultHttpClient();
-			HttpPost post = new HttpPost(PASSPORT_OAUTH_TOKEN_RESOURCE_URL);
+			HttpPost post = new HttpPost(CUSTOM_OAUTH_TOKEN_RESOURCE_URL);
 			post.setHeader("Authorization", authorization);
 			post.setEntity(new UrlEncodedFormEntity(postParameters));
 			HttpResponse response = client.execute(post);

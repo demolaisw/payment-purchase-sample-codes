@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.interswitchng.techquest</groupId>
-  <artifactId>postilion-sample-codes</artifactId>
+  <artifactId>payment-purchase-sample-codes</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>postilion-sample-codes</name>
+  <name>authentication-sample-codes</name>
   <url>http://maven.apache.org</url>
 
   <properties>

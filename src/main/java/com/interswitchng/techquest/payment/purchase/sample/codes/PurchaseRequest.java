@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.interswitchng.techquest.payment.purchase.sample.codes.utils.InterswitchAuth;
-import com.interswitchng.techquest.payment.purchase.sample.codes.utils.PassportAuth;
+import com.interswitchng.techquest.payment.purchase.sample.codes.utils.CustomOAuth;
 
 public class PurchaseRequest {
 
@@ -30,9 +30,9 @@ public class PurchaseRequest {
 	private static final String SIGNATURE = "SIGNATURE";
 	private static final String AUTHORIZATION = "AUTHORIZATION";
 
-	private static final String CLIENT_ID = "20FCA3E4D0574CF8B494E4619713606C";
-	private static final String CLIENT_SECRET = "k1F4EXtYfKHxUCtVSLfRp6U+wrqdr+l/17acNDf/aOFekBxTTMB+TmfOxnfp4rTy";
-
+	private static final String CLIENT_ID = "CLIENT_ID";
+	private static final String CLIENT_SECRET = "CLIENT_SECRET";
+	
 	public static void main(String[] args) throws Exception {
 		purchaseRequest();
 	}
@@ -99,8 +99,8 @@ public class PurchaseRequest {
 		// This our Authorization details that we'll add to our headers,
 		// the InterswitchAuth configuration can be found under Authentications
 		// above.
-		HashMap<String, String> passportAuth = PassportAuth
-				.generatePassportAuth(httpMethod, resourceUrl2, clientId,
+		HashMap<String, String> passportAuth = CustomOAuth
+				.generateCustomOAuth(httpMethod, resourceUrl2, clientId,
 						clientSecretKey, additionalParameters, signatureMethod);
 
 		// Write HTTP request to post
