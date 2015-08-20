@@ -22,7 +22,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.parser.JSONParser;
 
-public class CustomOAuth {
+public class OAuth {
 
 	private static final String CUSTOM_OAUTH_TOKEN_RESOURCE_URL = "http://172.25.20.140:5050/passport/oauth/token";
 	
@@ -35,12 +35,12 @@ public class CustomOAuth {
 	private static final String AUTHORIZATION_REALM = "Bearer ";
 	private static final String ISO_8859_1 = "ISO-8859-1";
 
-	public static HashMap<String, String> generateCustomOAuth(
+	public static HashMap<String, String> generateOAuth(
 			String httpMethod, String resourceUrl, String clientId,
 			String clientSecretKey, String additionalParameters,
 			String signatureMethod) throws UnsupportedEncodingException,
 			NoSuchAlgorithmException {
-		HashMap<String, String> passportAuth = new HashMap<String, String>();
+		HashMap<String, String> oAuth = new HashMap<String, String>();
 		
 		//Timezone MUST be Africa/Lagos.
 		TimeZone lagosTimeZone = TimeZone.getTimeZone("Africa/Lagos");
@@ -100,16 +100,16 @@ public class CustomOAuth {
 		// encode signature as base 64 
 		String signature = new String(Base64.encodeBase64(signatureBytes));
 		
-		String passportAccessToken = AUTHORIZATION_REALM + jsonResponse.get("access_token").toString();
+		String oAccessToken = AUTHORIZATION_REALM + jsonResponse.get("access_token").toString();
 
-		passportAuth.put(AUTHORIZATION, passportAccessToken);
-		passportAuth.put(TIMESTAMP, String.valueOf(timestamp));
-		passportAuth.put(NONCE, nonce);
-		passportAuth.put(SIGNATURE_METHOD, signatureMethod);
-		passportAuth.put(SIGNATURE, signature);
+		oAuth.put(AUTHORIZATION, oAccessToken);
+		oAuth.put(TIMESTAMP, String.valueOf(timestamp));
+		oAuth.put(NONCE, nonce);
+		oAuth.put(SIGNATURE_METHOD, signatureMethod);
+		oAuth.put(SIGNATURE, signature);
 
 		System.out.println(signatureCipher);
 		
-		return passportAuth;
+		return oAuth;
 	}
 }

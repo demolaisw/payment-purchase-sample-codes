@@ -17,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.interswitchng.techquest.payment.purchase.sample.codes.utils.InterswitchAuth;
-import com.interswitchng.techquest.payment.purchase.sample.codes.utils.CustomOAuth;
+import com.interswitchng.techquest.payment.purchase.sample.codes.utils.OAuth;
 
 public class PurchaseRequest {
 
@@ -99,8 +99,8 @@ public class PurchaseRequest {
 		// This our Authorization details that we'll add to our headers,
 		// the InterswitchAuth configuration can be found under Authentications
 		// above.
-		HashMap<String, String> customOAuth = CustomOAuth
-				.generateCustomOAuth(httpMethod, resourceUrl2, clientId,
+		HashMap<String, String> oAuth = OAuth
+				.generateOAuth(httpMethod, resourceUrl2, clientId,
 						clientSecretKey, additionalParameters, signatureMethod);
 
 		// Write HTTP request to post
@@ -108,11 +108,11 @@ public class PurchaseRequest {
 		HttpPost post = new HttpPost(resourceUrl);
 
 		// Set headers for authorization
-		post.setHeader("Authorization", customOAuth.get(AUTHORIZATION));
-		post.setHeader("Timestamp", customOAuth.get(TIMESTAMP));
-		post.setHeader("Nonce", customOAuth.get(NONCE));
-		post.setHeader("Signature", customOAuth.get(SIGNATURE));
-		post.setHeader("SignatureMethod", customOAuth.get(SIGNATURE_METHOD));
+		post.setHeader("Authorization", oAuth.get(AUTHORIZATION));
+		post.setHeader("Timestamp", oAuth.get(TIMESTAMP));
+		post.setHeader("Nonce", oAuth.get(NONCE));
+		post.setHeader("Signature", oAuth.get(SIGNATURE));
+		post.setHeader("SignatureMethod", oAuth.get(SIGNATURE_METHOD));
 
 		StringEntity entity = new StringEntity(data);
 
@@ -149,12 +149,12 @@ public class PurchaseRequest {
 		// Printout response string
 		System.out.println("Url: " + resourceUrl);
 		System.out.println("Authorization: "
-				+ customOAuth.get(AUTHORIZATION));
-		System.out.println("Timestamp: " + customOAuth.get(TIMESTAMP));
-		System.out.println("Nonce: " + customOAuth.get(NONCE));
-		System.out.println("Signature: " + customOAuth.get(SIGNATURE));
+				+ oAuth.get(AUTHORIZATION));
+		System.out.println("Timestamp: " + oAuth.get(TIMESTAMP));
+		System.out.println("Nonce: " + oAuth.get(NONCE));
+		System.out.println("Signature: " + oAuth.get(SIGNATURE));
 		System.out.println("SignatureMethod: "
-				+ customOAuth.get(SIGNATURE_METHOD));
+				+ oAuth.get(SIGNATURE_METHOD));
 	}
 
 }
