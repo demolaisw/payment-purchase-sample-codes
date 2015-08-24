@@ -43,12 +43,6 @@ public class PurchaseRequest {
 	public static String getAuthData(String pin, String pan, String expiryDate, 
 			String cvv2, String version, String otpIdentifier)
 	{
-		pin = "1234";
-		pan = "1234123412341234123";
-		expiryDate = "1234";
-		cvv2 = "123";
-		version = "";
-		otpIdentifier = "";
 		String authData = pan + "D" + pin + "D" + expiryDate + "D" + cvv2 + "D" + version + "D" + otpIdentifier;
 		String encryptedAuthDataBase64 = null;
 		
@@ -79,12 +73,11 @@ public class PurchaseRequest {
 	public static void purchaseRequest() throws NoSuchAlgorithmException,
 			ClientProtocolException, IOException, JSONException {
 
-		String customerId = "1407002510";
+		String customerId = "tunjiadaora@gmail.com";
 		
 		String amount = "100.00";
 		
-		//String authData = getAuthData("1234", "5060990580000166902", "5003", "111", "", "");
-		String authData = "dJ1rypdsZUa2T8U6DG7lwJL9gtzqky8jrRBB60yLDI/fGykojiA7sogz7OT3VsiYegX2oU7h/Njx8f0SJ6oCM7IIRrxCttH55mai+V0NxMJpr/5TnAHUkJLm1NL9w31K1wwS/1MPAnd4kLowqdoyauvrk9GTYB2K9PfBQQY/H17WYiicK4qcZRGriIJ1dhmYH9XcI7vbDEGt5Hx4RZajYH7huZfkJEI12Z5Vf4+63Bx57FVebFcgcDLF2R2frik67et60k+yby/SkIySx0JLiMrdd3HzuB+1J/cfLN/noJDT8nlYkrnC4Aul9KUWlfPY8dWeQK4nit7O4Av9N+s9fQ==";
+		String authData = getAuthData("1234", "1234123412341234123", "1234", "123", "", "");
 		
 		String currency = "NGN";
 		
