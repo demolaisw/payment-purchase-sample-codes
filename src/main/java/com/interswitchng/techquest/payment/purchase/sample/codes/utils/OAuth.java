@@ -24,7 +24,7 @@ import org.json.simple.parser.JSONParser;
 
 public class OAuth {
 
-	private static final String CUSTOM_OAUTH_TOKEN_RESOURCE_URL = "http://172.25.20.140:5050/passport/oauth/token";
+	private static final String CUSTOM_OAUTH_TOKEN_RESOURCE_URL = "http://sandbox.interswitchng.com/passport/oauth/token";
 	
 	private static final String TIMESTAMP = "TIMESTAMP";
 	private static final String NONCE = "NONCE";
